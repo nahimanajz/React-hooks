@@ -1,26 +1,88 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+function Todo({todo, index, completeTodo, removeTodo}) {
+  return(
+    <div style={{textDecoration: todo.isCompleted ? 'line-through':''}}
+      className="todo">
+      {todo.text}
+      <div>
+        <button onClick={()=> completeTodo(index)}>Complete</button>
+        <button onClick={() => removeTodo(index)}>X</button>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </div>
+      </div>
+
   );
 }
+function TodoForm({addTodo}) {
+  const [value, setValue] = useState('');
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    if(!value) return;
+    addTodo(value);
+    setValue('');
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text"
+         className="input"
+         value={value}
+         placeholder="Add Todos..."
+         onChange={e => setValue(e.target.value)}></input>
+    </form>
+  )
+
+}
+function App() {
+  const [todos, setTodos] = useState([
+    {
+      text: 'learn React',
+      isCompleted: false
+    },
+    {
+      text: 'Meet a friend for lunch',
+      isCompleted: false
+    },
+    {
+      text: 'build really cool todo app',
+      isCompleted: false
+    }
+]);
+const addTodo = text => {
+  const newTodos = [...todos,{ text}];
+  setTodos(newTodos);
+} 
+const completeTodo = index => {
+  const newTodo = [...todos];
+    newTodo[index].isCompleted = true;
+    setTodos(newTodo); 
+}
+const removeTodo = index => {
+  const newTodo = [...todos];
+  newTodo.splice(index, 1);
+  setTodos(newTodo);
+
+} 
+
+return (
+  <div className="app">
+    <div className="todo-list">
+        {todos.map((todo, index) => (
+          <Todo
+            key = {index}
+            index = {index}
+            todo = {todo}
+            completeTodo = {completeTodo}
+            removeTodo = {removeTodo}
+           />
+        )
+        )
+        }
+        <TodoForm addTodo = {addTodo} /> 
+        
+    </div>
+  </div>
+);
+}
 export default App;
