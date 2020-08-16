@@ -22,3 +22,6 @@
   align-items: center;
   justify-content: space-between;
 }
+.ui.inverted.dimmer {
+  background:rgba(255, 255,255,0) !important;
+}
