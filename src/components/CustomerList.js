@@ -7,9 +7,9 @@ class CustomerList extends Component {
         this.props.onDelete(id);
     }; 
     
-    onEdit = id => {
-        // this.props.onEdit(id);
-        console.log('customer', id);
+    onEdit = data => {
+        this.props.onEdit(data);
+        // console.log('on edit customer', id);
     };
 
     render() {

@@ -5,16 +5,17 @@ class Customer extends Component {
         this.props.onDelete(this.props.customer.id);
     };
     onEdit = () => {
-        this.props.onEdit(this.props.customer.id);
+        this.props.onEdit(this.props.customer);
+        
     };
     render(){
-        const customer = this.props.customer;
+        const { id, first_name, last_name, email } = this.props.customer;
         
         return (
                 <tr>
-                    <td style={{ textAlign: 'center' }}> { customer.id }</td>
-                    <td> { `${customer.first_name} ${customer.last_name}` }</td>
-                    <td> { customer.email }</td>
+                    <td style={{ textAlign: 'center' }}> { id }</td>
+                    <td> { `${first_name} ${last_name}` }</td>
+                    <td> { email }</td>
                     <td> 
                         <button className="mini ui blue button" onClick={this.onEdit}>Edit</button>
                         <button className="mini ui red button" onClick={this.onDelete}>Delete</button>
