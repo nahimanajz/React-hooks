@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import  '../App';
 import Axios from 'axios';
+import AllPosts from './AllPosts';
 export default function Post()  {
     const [form, setFormData] =  useState({
       title:'',
@@ -68,15 +69,8 @@ export default function Post()  {
             </form>         
 
             <div className="show-Post">
-            {data.posts.map((post) => {
-              return (
-                <div className="post-content dark-light">
-                  <h3>{post.title}</h3>
-                  <p>{ post.post }</p>
-                  <small>{post.category}</small>
-                </div>
-                
-              ); 
+            {data.posts.map((post) => {             
+              return <AllPosts {...post} />;
             })}
               
            
