@@ -22,3 +22,22 @@
   align-items: center;
   justify-content: space-between;
 }
+.ui.inverted.dimmer {
+  background:rgba(255, 255,255,0) !important;
+}
+form {
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 8px;
+}
+.show-post {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #e8e8e8;
+}
+.post-content {
+    flex: 0 1 400px;
+    margin: 4px;
+}
+.dark-light {background: coral;}

@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import App from './App';
+// import CRUDApp from './components/CRUDApp';
+import BasicExample from './routerComponents/BasicExample';
+// import Post from './postComponent/Post';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// ReactDOM.render(<CRUDApp />, document.querySelector('#root'));
+// ReactDOM.render(<Post />, document.querySelector("#root"));
+ReactDOM.render(<BasicExample />, document.querySelector("#root"))
