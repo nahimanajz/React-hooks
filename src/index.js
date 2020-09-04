@@ -1,10 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-// import App from './App';
-// import CRUDApp from './components/CRUDApp';
-import BasicExample from './routerComponents/BasicExample';
-// import Post from './postComponent/Post';
+import  store from "./reduxComponents/store";
+import  { bugAdded, bugResolved }  from "./reduxComponents/actionsCreator";
 
-// ReactDOM.render(<CRUDApp />, document.querySelector('#root'));
-// ReactDOM.render(<Post />, document.querySelector("#root"));
-ReactDOM.render(<BasicExample />, document.querySelector("#root"))
+store.dispatch(bugAdded('Buuug One'));
+store.dispatch(bugResolved(1));
+
+
+console.log(store.getState());
